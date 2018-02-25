@@ -4,7 +4,7 @@ import { title } from 'change-case';
 
 class Home extends Component {
     render() {
-        const { headerStyle, titleStyle } = styles;
+        const { headerStyle, titleStyle, deckTitleStyle, deckSubtitleStyle, deckBodyStyle} = styles;
         return (
             <Container>
                 <Header style={headerStyle} iosBarStyle='light-content'>
@@ -22,27 +22,42 @@ class Home extends Component {
                     <List>
                         <ListItem icon>
                             <Left><Icon name='flask' /></Left>
-                            <Body><Text>React Native</Text></Body>
+                            <Body>
+                                <Text style={deckTitleStyle}>React Native</Text>
+                                <Text note style={deckSubtitleStyle}>5 Questions</Text>
+                            </Body>
                             <Right><Icon name='arrow-forward' /></Right>
                         </ListItem>
                         <ListItem icon>
                             <Left><Icon name='flame' /></Left>
-                            <Body><Text>Webpack</Text></Body>
+                            <Body>
+                                <Text style={deckTitleStyle}>Webpack</Text>
+                                <Text note style={deckSubtitleStyle}>2 Questions</Text>
+                            </Body>
                             <Right><Icon name='arrow-forward' /></Right>
                         </ListItem>
                         <ListItem icon>
                             <Left><Icon name='beer' /></Left>
-                            <Body><Text>Beer</Text></Body>
+                            <Body>
+                                <Text style={deckTitleStyle}>Beer</Text>
+                                <Text note style={deckSubtitleStyle}>3 Questions</Text>
+                            </Body>
                             <Right><Icon name='arrow-forward' /></Right>
                         </ListItem>
                         <ListItem icon>
                             <Left><Icon name='ionic' /></Left>
-                            <Body><Text>Ionic</Text></Body>
+                            <Body>
+                                <Text style={deckTitleStyle}>Ionic</Text>
+                                <Text note style={deckSubtitleStyle}>1 Questions</Text>
+                            </Body>
                             <Right><Icon name='arrow-forward' /></Right>
                         </ListItem>
                         <ListItem icon>
                             <Left><Icon name='pizza' /></Left>
-                            <Body><Text>Pizza</Text></Body>
+                            <Body>
+                                <Text style={deckTitleStyle}>Pizza</Text>
+                                <Text note style={deckSubtitleStyle}>3 Questions</Text>
+                            </Body>
                             <Right><Icon name='arrow-forward' /></Right>
                         </ListItem>
                     </List>
@@ -58,7 +73,18 @@ const styles = {
     },
     titleStyle : {
         color: 'white',
-    }
+    },
+    deckBodyStyle: {
+        paddingTop: 8,
+        paddingBottom : 8,
+    },
+    deckTitleStyle : {
+        fontWeight: 'bold',
+    },
+    deckSubtitleStyle : {
+        fontSize: 12,
+        paddingBottom: 8,
+    },
 }
 
 export default Home;
