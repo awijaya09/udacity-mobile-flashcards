@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Content,Body, Left, Right, Icon, Title, Button} from 'native-base';
+import { Container, Header, Content,Body, Left, Right, Icon, Title, Button, Form, Item, Label, Input, Text} from 'native-base';
 
 class AddNewDeck extends Component { 
     render() {
@@ -18,8 +18,20 @@ class AddNewDeck extends Component {
                         </Button>
                     </Right>
                 </Header>
-                <Content>
-
+                <Content padder>
+                <Form>
+                    <Item floatingLabel>
+                        <Label>Title</Label>
+                        <Input />
+                    </Item>
+                    <Item floatingLabel last>
+                        <Label>Icon Name</Label>
+                        <Input />
+                    </Item>
+                </Form>
+                <Button block info style={{ marginTop: 16, marginRight: 16, marginLeft: 16}}>
+                    <Text>Create New Deck</Text>
+                </Button>
                 </Content>
         </Container>
         )
