@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Container, Header, Body, Title, Left, Right, Button, Icon, Content, List, ListItem, Text} from 'native-base';
 import { title } from 'change-case';
+import AddNewDeck from './AddNewDeck';
 
 class Home extends Component {
     render() {
         const { headerStyle, titleStyle, deckTitleStyle, deckSubtitleStyle, deckBodyStyle} = styles;
+        const { navigate } = this.props.navigation;
+
         return (
             <Container>
                 <Header style={headerStyle} iosBarStyle='light-content'>
@@ -13,7 +16,7 @@ class Home extends Component {
                         <Title style={titleStyle}>QuizCard</Title>
                     </Body>
                     <Right>
-                        <Button transparent>
+                        <Button transparent onPress={() => navigate('NewDeck')}>
                             <Icon name='add' style={titleStyle} />
                         </Button>
                     </Right>
