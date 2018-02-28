@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Header, Body, Title, Left, Right, Button, Icon, Content, Text, Card, CardItem, Grid, Col} from 'native-base';
 import { title } from 'change-case';
 import AddNewDeck from './AddNewDeck';
+import DeckSingle from './DeckSingle';
 
 class Home extends Component {
 
@@ -33,28 +34,12 @@ class Home extends Component {
                 </Header>
                 <Content padder>
                     <Grid>
-                        <Col>
-                            <Card>
-                                <CardItem button onPress={() => this.goToDetail()}>
-                                    <Body style={deckBodyStyle}>
-                                        <Icon name='flask' style={deckIconStyle}/>
-                                        <Text style={deckTitleStyle}>React Native</Text>
-                                        <Text style={deckSubtitleStyle}>5 Questions</Text>
-                                    </Body>
-                                </CardItem>
-                            </Card>
-                        </Col>
-                        <Col>
-                            <Card>
-                                <CardItem button onPress={() => this.goToDetail()}>
-                                    <Body style={deckBodyStyle}>
-                                        <Icon name='flame' style={deckIconStyle}/>
-                                        <Text style={deckTitleStyle}>Webpack</Text>
-                                        <Text style={deckSubtitleStyle}>3 Questions</Text>
-                                    </Body>
-                                </CardItem>
-                            </Card>
-                        </Col>
+                        <DeckSingle itemTitle={'Webpack'} itemIcon={'flame'} itemQuestionsCount={3} onItemClick={() => this.goToDetail()}/>
+                        <DeckSingle itemTitle={'React Native'} itemIcon={'pizza'} itemQuestionsCount={5} onItemClick={() => this.goToDetail()}/>
+                    </Grid>
+                    <Grid>
+                        <DeckSingle itemTitle={'Udacity'} itemIcon={'book'} itemQuestionsCount={5} onItemClick={() => this.goToDetail()}/>
+                        <DeckSingle itemTitle={'Rolex'} itemIcon={'watch'} itemQuestionsCount={5} onItemClick={() => this.goToDetail()}/>
                     </Grid>
                 </Content>
             </Container>
@@ -68,23 +53,6 @@ const styles = {
     },
     titleStyle : {
         color: 'white',
-    },
-    deckIconStyle: {
-        alignSelf: 'center',
-        fontSize: 50,
-    },
-    deckBodyStyle: {
-        paddingTop: 20,
-        paddingBottom : 20,
-        alignItems: 'center'
-    },
-    deckTitleStyle : {
-        fontWeight: 'bold',
-    },
-    deckSubtitleStyle : {
-        fontSize: 12,
-        color: 'grey',
-        fontWeight: '100'
     },
 }
 

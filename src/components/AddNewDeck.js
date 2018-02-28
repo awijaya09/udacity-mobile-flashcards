@@ -4,32 +4,32 @@ import { Container, Header, Content,Body, Left, Right, Icon, Title, Button, Form
 class AddNewDeck extends Component { 
     render() {
         const { navigate, goBack } = this.props.navigation;
-        const { headerStyle, itemStyle } = styles;
+        const { headerStyle, itemStyle, titleStyle, buttonStyle} = styles;
         return (
             <Container>
                 <Header style={headerStyle} iosBarStyle='light-content'>
                     <Left />
                     <Body>
-                        <Title style={itemStyle}>Add New Deck</Title>
+                        <Title style={titleStyle}>Add New Deck</Title>
                     </Body>
                     <Right>
                         <Button transparent onPress={() => goBack()}>
-                            <Icon name='close' style={itemStyle}/>
+                            <Icon name='close' style={titleStyle}/>
                         </Button>
                     </Right>
                 </Header>
                 <Content padder>
                 <Form>
-                    <Item floatingLabel>
+                    <Item floatingLabel style={itemStyle}>
                         <Label>Title</Label>
                         <Input />
                     </Item>
-                    <Item floatingLabel last>
+                    <Item floatingLabel style={itemStyle}>
                         <Label>Icon Name</Label>
                         <Input />
                     </Item>
                 </Form>
-                <Button block info style={{ marginTop: 16, marginRight: 16, marginLeft: 16}}>
+                <Button block info style={buttonStyle}>
                     <Text>Create New Deck</Text>
                 </Button>
                 </Content>
@@ -42,9 +42,17 @@ const styles = {
     headerStyle : {
         backgroundColor: '#01579B',
     },
-    itemStyle : {
+    titleStyle : {
         color: 'white',
     },
+    itemStyle : {
+        marginRight: 16,
+    },
+    buttonStyle : {
+        marginTop: 16, 
+        marginRight: 16, 
+        marginLeft: 16
+    }
 }
 
 export default AddNewDeck;
