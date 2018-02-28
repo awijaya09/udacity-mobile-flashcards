@@ -6,7 +6,7 @@ class DeckSingle extends Component {
         const { deckIconStyle, deckBodyStyle, deckTitleStyle, deckSubtitleStyle } = styles ;
         const { onItemClick, itemTitle, itemQuestionsCount, itemIcon} = this.props;
         return(
-            <Col style={{ padding: 4 }}>
+            <Col style={{ paddingLeft: 2, paddingRight: 2 }}>
                 <Card>
                     <CardItem button onPress={onItemClick}>
                         <Body style={deckBodyStyle}>
@@ -20,7 +20,6 @@ class DeckSingle extends Component {
         )
     }
 }
-
 
 const styles = {
     deckIconStyle: {
