@@ -22,10 +22,6 @@
             {
                 "question": "React technology is developed by Google",
                 "answer": "Facebook team came up with React JS"
-            },
-            {
-                "question": "React can be used for both Web and Mobile Apps Development",
-                "answer": "Yes. React JS can be used to develop web apps and React Native for mobile apps"
             }
         ]
     }
