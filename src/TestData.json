@@ -1,0 +1,32 @@
+{
+    "Watch": {
+        "title": "Watch Lover",
+        "icon": "watch",
+        "id": 1,
+        "questions": [
+            {
+                "question": "GMT Master is available in full plastic",
+                "answer": "GMT Master is available in only steel and gold"
+            },
+            {
+                "question": "Rolex Daytona is the entry level for Rolex Watches",
+                "answer": "Daytona is one of the most iconic and expensive lineup from Rolex"
+            }
+        ]
+    },
+    "React": {
+        "title": "React",
+        "icon": "flame",
+        "id": 2,
+        "questions": [
+            {
+                "question": "React technology is developed by Google",
+                "answer": "Facebook team came up with React JS"
+            },
+            {
+                "question": "React can be used for both Web and Mobile Apps Development",
+                "answer": "Yes. React JS can be used to develop web apps and React Native for mobile apps"
+            }
+        ]
+    }
+}
