@@ -42,13 +42,14 @@ class Home extends Component {
                 </View>
             )
         }
-        return (
-            
-            <Grid>
-                <DeckSingle itemTitle={'React'} itemIcon={'flame'} itemQuestionsCount={3} onItemClick={() => this.goToDetail()}/>
-            </Grid>
-        )
-        
+        return _.map(decks, deckItem => {
+            console.log(deckItem.title);
+            return (
+                <Grid key={deckItem.id}>
+                    <DeckSingle itemTitle={deckItem.title} itemIcon={deckItem.icon} itemQuestionsCount={deckItem.questions.length} onItemClick={() => this.goToDetail()}/>
+                </Grid>
+            )
+        })
     }
 
     render() {

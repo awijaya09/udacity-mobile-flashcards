@@ -4,8 +4,7 @@ import _ from 'lodash';
 export default function(state = {}, action) {
     switch(action.type) {
     case FETCH_ALL_DECK:
-        console.log("Payload: " + action.payload.data);
-        return action.payload.data;
+        return JSON.parse(action.payload);
     default:
         return state;
     }
