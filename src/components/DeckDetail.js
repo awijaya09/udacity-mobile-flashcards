@@ -37,7 +37,7 @@ class DetailDeck extends Component {
 
 const styles = {
     headerStyle : {
-        backgroundColor: '#01579B',
+        backgroundColor: '#3F51B5',
     },
     titleStyle : {
         color: 'white',

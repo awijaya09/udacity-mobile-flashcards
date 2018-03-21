@@ -19,7 +19,6 @@ class Home extends Component {
     }
 
     componentWillMount() {
-        // AsyncStorage.removeItem('decks');
         AsyncStorage.getItem('decks', (error, data) => {
             if (data === null) {
                 AsyncStorage.setItem('decks', JSON.stringify(InitialData));
@@ -79,7 +78,8 @@ class Home extends Component {
 
 const styles = {
     headerStyle : {
-        backgroundColor: '#01579B',
+        backgroundColor: '#3F51B5',
+        height: 54,
     },
     titleStyle : {
         color: 'white',

@@ -1,7 +1,40 @@
 import React, { Component } from 'react';
 import { Container, Header, Content,Body, Left, Right, Icon, Title, Button, Form, Item, Label, Input, Text} from 'native-base';
 
+import { connect } from 'react-redux';
+import { addNewDeck } from '../actions';
+import _ from 'lodash';
+
 class AddNewDeck extends Component { 
+    constructor(props) {
+        super(props);
+        this.submitNewDeck = this.submitNewDeck.bind(this);
+        this.state = {
+            title: '',
+            iconName: '',
+        };
+    }
+
+    submitNewDeck() {
+        const { title, iconName } = this.state;
+        if (title && iconName) {
+            const newData = { 
+                title: {
+                    "title" : title,
+                    "icon": iconName,
+                    "id": _.random(0,999),
+                    "questions" : []
+                }
+            };
+            this.props.addNewDeck(newData, (payload) => {
+                console.log("New deck has been inserted : " + payload);
+                return payload;
+            });
+        }
+       
+    }
+
+
     render() {
         const { navigate, goBack } = this.props.navigation;
         const { headerStyle, itemStyle, titleStyle, buttonStyle} = styles;
@@ -22,14 +55,14 @@ class AddNewDeck extends Component {
                 <Form>
                     <Item floatingLabel style={itemStyle}>
                         <Label>Title</Label>
-                        <Input />
+                        <Input value={this.state.title} onChangeText={(title) => this.setState({ title })}/>
                     </Item>
                     <Item floatingLabel style={itemStyle}>
                         <Label>Icon Name</Label>
-                        <Input />
+                        <Input onChangeText={(iconName) => this.setState({ iconName })} value={this.state.iconName}/>
                     </Item>
                 </Form>
-                <Button block info style={buttonStyle}>
+                <Button block info style={buttonStyle} onPress={() => this.submitNewDeck()}>
                     <Text>Create New Deck</Text>
                 </Button>
                 </Content>
@@ -40,7 +73,7 @@ class AddNewDeck extends Component {
 }
 const styles = {
     headerStyle : {
-        backgroundColor: '#01579B',
+        backgroundColor: '#3F51B5',
     },
     titleStyle : {
         color: 'white',
@@ -51,8 +84,9 @@ const styles = {
     buttonStyle : {
         marginTop: 16, 
         marginRight: 16, 
-        marginLeft: 16
+        marginLeft: 16,
+        backgroundColor: '#5C6BC0',
     }
 }
 
-export default AddNewDeck;
+export default connect(null, { addNewDeck })(AddNewDeck);
