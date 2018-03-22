@@ -1,5 +1,5 @@
 import { AsyncStorage } from 'react-native';
-import { FETCH_ALL_DECK, ADD_NEW_DECK } from './ActionTypes';
+import { FETCH_ALL_DECK, ADD_NEW_DECK, ADD_NEW_QUESTION } from './ActionTypes';
 
 export function fetchAllDecks() {
     const getItem = AsyncStorage.getItem('decks')
@@ -31,5 +31,13 @@ export function addNewDeck(values) {
     return {
         type: ADD_NEW_DECK,
         payload: currentDeck
+    }
+}
+
+export function addNewQuestion(values, deckId) {
+
+    return {
+        type: ADD_NEW_QUESTION,
+       
     }
 }

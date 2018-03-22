@@ -4,6 +4,7 @@ import { StackNavigator } from 'react-navigation';
 import Home from './components/Home';
 import AddNewDeck from './components/AddNewDeck';
 import DeckDetail from './components/DeckDetail';
+import AddNewQuestion from './components/AddNewQuestion';
 
 //redux stack
 import reducers from './reducers';
@@ -15,7 +16,8 @@ const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
 const MainStack = StackNavigator({
   Home: { screen : Home },
-  DetailDeck: { screen: DeckDetail }
+  DetailDeck: { screen: DeckDetail },
+  AddNewQuestion: { screen: AddNewQuestion },
 },
 {
   headerMode: 'none',
