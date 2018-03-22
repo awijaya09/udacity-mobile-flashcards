@@ -4,6 +4,7 @@ import { FETCH_ALL_DECK, ADD_NEW_DECK } from './ActionTypes';
 export function fetchAllDecks() {
     const getItem = AsyncStorage.getItem('decks')
         .then(decks => {
+            console.log("Deck item: " + decks);
             return JSON.parse(decks);
         })
         .catch(error => {
@@ -15,14 +16,16 @@ export function fetchAllDecks() {
     }
 }
 
-export function addNewDeck(values, callback) {
+export function addNewDeck(values) {
     const currentDeck = AsyncStorage.getItem('decks')
         .then(decks => {
-            const insertNewItem = AsyncStorage.setItem('decks', decks += JSON.stringify(values))
+            var oldDecks = JSON.parse(decks);
+            oldDecks['Decks'].push(values)
+            const insertNewItem = AsyncStorage.setItem('decks', JSON.stringify(oldDecks))
                 .catch(error => {
-                    callback(null);
+                    return null;
                 });
-            callback(decks);
+            return oldDecks;
         });
     
     return {

@@ -18,18 +18,17 @@ class AddNewDeck extends Component {
     submitNewDeck() {
         const { title, iconName } = this.state;
         if (title && iconName) {
-            const newData = { 
-                title: {
+            var deckId = _.random(0,999);
+            var newData= { 
                     "title" : title,
                     "icon": iconName,
-                    "id": _.random(0,999),
+                    "id": deckId,
                     "questions" : []
-                }
             };
-            this.props.addNewDeck(newData, (payload) => {
-                console.log("New deck has been inserted : " + payload);
-                return payload;
-            });
+            var val = this.props.addNewDeck(newData);
+            if (val) {
+                this.props.navigation.goBack();
+            }
         }
        
     }

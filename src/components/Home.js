@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Body, Title, Left, Right, Button, Icon, Content, Text, Card, CardItem, Grid, Col, Spinner} from 'native-base';
+import { Container, Header, Body, Title, Left, Right, Button, Icon, Content, Text, Card, CardItem, Grid, Col, Spinner, View} from 'native-base';
 import { title } from 'change-case';
 import AddNewDeck from './AddNewDeck';
 import DeckSingle from './DeckSingle';
@@ -19,13 +19,15 @@ class Home extends Component {
     }
 
     componentWillMount() {
+        //AsyncStorage.removeItem('decks');
         AsyncStorage.getItem('decks', (error, data) => {
             if (data === null) {
                 AsyncStorage.setItem('decks', JSON.stringify(InitialData));
                 this.props.fetchAllDecks();
             }
+
+            this.props.fetchAllDecks();
         });
-        this.props.fetchAllDecks();
     }
 
     goToDetail() {
@@ -34,18 +36,23 @@ class Home extends Component {
 
     renderContent() {
         const { decks } = this.props;
-        if(!decks) {
+        if(!decks['Decks']) {
             return (
                 <View>
                     <Spinner color={'blue'} />
                 </View>
             )
         }
-        return _.map(decks, deckItem => {
+        return _.map(decks['Decks'], deckItem => {
             console.log(deckItem.title);
             return (
                 <Grid key={deckItem.id}>
-                    <DeckSingle itemTitle={deckItem.title} itemIcon={deckItem.icon} itemQuestionsCount={deckItem.questions.length} onItemClick={() => this.goToDetail()}/>
+                    <DeckSingle 
+                        itemTitle={deckItem.title} 
+                        itemIcon={deckItem.icon} 
+                        itemQuestionsCount={deckItem.questions.length !== null ? deckItem.questions.length : 0} 
+                        onItemClick={() => this.goToDetail()}
+                    />
                 </Grid>
             )
         })
