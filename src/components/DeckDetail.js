@@ -5,6 +5,7 @@ import { title } from 'change-case';
 class DetailDeck extends Component { 
     render() {
         const { goBack } = this.props.navigation;
+        const { deckData } = this.props.navigation.state.params;
         const { headerStyle, titleStyle, contentStyle, deckTitleStyle, deckSubtitleStyle, buttonStyle} = styles;
         return(
             <Container>
@@ -20,9 +21,11 @@ class DetailDeck extends Component {
                    <Right />
                 </Header>
                 <Content contentContainerStyle={contentStyle}>
-                    <Icon name='flame' style={{fontSize: 150}}/>
-                    <Text style={deckTitleStyle}>Webpack</Text>
-                    <Text style={[deckSubtitleStyle, {marginBottom: 48}]}>3 Questions</Text>
+                    <Icon name={deckData.icon} style={{fontSize: 150}}/>
+                    <Text style={deckTitleStyle}>{deckData.title}</Text>
+                    <Text style={[deckSubtitleStyle, {marginBottom: 48}]}>
+                        {deckData.questions.length !== null ? deckData.questions.length : 0} Questions
+                    </Text>
                     <Button full dark style={buttonStyle}>
                         <Text>Start quiz</Text>
                     </Button>

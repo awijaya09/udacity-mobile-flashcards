@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Content,Body, Left, Right, Icon, Title, Button, Form, Item, Label, Input, Text} from 'native-base';
+import { Container, Header, Content,Body, Left, Right, Icon, Title, Button, Form, Item, Label, Input, Text, Picker} from 'native-base';
 
 import { connect } from 'react-redux';
 import { addNewDeck } from '../actions';
@@ -56,10 +56,18 @@ class AddNewDeck extends Component {
                         <Label>Title</Label>
                         <Input value={this.state.title} onChangeText={(title) => this.setState({ title })}/>
                     </Item>
-                    <Item floatingLabel style={itemStyle}>
-                        <Label>Icon Name</Label>
-                        <Input onChangeText={(iconName) => this.setState({ iconName })} value={this.state.iconName}/>
-                    </Item>
+                    <Picker
+                        mode="dropdown"
+                        placeholder="Select Icon"
+                        selectedValue={this.state.iconName}
+                        onValueChange={(iconName) => this.setState({ iconName})}
+                    >
+                        <Item label="Key" value="md-key" />
+                        <Item label="Switch" value="md-switch" />
+                        <Item label="Football" value="md-football" />
+                        <Item label="Funnel" value="md-funnel" />
+                        <Item label="Man" value="md-man" />
+                    </Picker>
                 </Form>
                 <Button block info style={buttonStyle} onPress={() => this.submitNewDeck()}>
                     <Text>Create New Deck</Text>

@@ -30,8 +30,8 @@ class Home extends Component {
         });
     }
 
-    goToDetail() {
-        this.props.navigation.navigate('DetailDeck');
+    goToDetail(deckItem) {
+        this.props.navigation.navigate('DetailDeck', { deckData: deckItem });
     }
 
     renderContent() {
@@ -51,7 +51,7 @@ class Home extends Component {
                         itemTitle={deckItem.title} 
                         itemIcon={deckItem.icon} 
                         itemQuestionsCount={deckItem.questions.length !== null ? deckItem.questions.length : 0} 
-                        onItemClick={() => this.goToDetail()}
+                        onItemClick={() => this.goToDetail(deckItem)}
                     />
                 </Grid>
             )
