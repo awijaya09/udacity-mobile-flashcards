@@ -4,6 +4,7 @@ import { title } from 'change-case';
 
 import { connect } from 'react-redux';
 import { fetchAllDecks } from '../actions';
+import PageHeader from './Common/PageHeader';
 
 class DetailDeck extends Component { 
     constructor(props) {
@@ -47,17 +48,7 @@ class DetailDeck extends Component {
         
         return(
             <Container>
-                <Header style={headerStyle} iosBarStyle='light-content'>
-                    <Left>
-                        <Button transparent onPress={() => goBack()}> 
-                            <Icon name='arrow-back' style={titleStyle}/>
-                        </Button>
-                    </Left>
-                    <Body>
-                        <Title style={titleStyle}>Detail Card</Title>
-                    </Body>
-                   <Right />
-                </Header>
+                <PageHeader pageTitle={"Deck Detail"} goToPrevPage={() => goBack()}/>
                 {this.renderContent()}
             </Container>
         )
