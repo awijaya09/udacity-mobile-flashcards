@@ -37,6 +37,13 @@ export function addNewQuestion(values, deckId) {
     const currentDeck = AsyncStorage.getItem('decks')
         .then(decks => {
             var oldDecks = JSON.parse(decks);
+            oldDecks['Decks'][deckId].questions.push(values);
+            const insertNewItem = AsyncStorage.setItem('decks', JSON.stringify(oldDecks))
+                .catch(error => {
+                    return null;
+                });
+            console.log("Deck update: " + oldDecks);
+            return oldDecks;
         });
 
     return {

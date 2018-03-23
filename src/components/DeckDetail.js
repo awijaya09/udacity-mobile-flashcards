@@ -29,7 +29,7 @@ class DetailDeck extends Component {
                     <Button full dark style={buttonStyle}>
                         <Text>Start quiz</Text>
                     </Button>
-                    <Button full bordered dark style={buttonStyle} onPress={() => this.props.navigation.navigate('AddNewQuestion')}>
+                    <Button full bordered dark style={buttonStyle} onPress={() => this.props.navigation.navigate('AddNewQuestion', { deckID: deckData.id })}>
                         <Text>Add a new question</Text>
                     </Button>
                 </Content>

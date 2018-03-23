@@ -1,4 +1,4 @@
-import { FETCH_ALL_DECK, ADD_NEW_DECK} from '../actions/ActionTypes';
+import { FETCH_ALL_DECK, ADD_NEW_DECK, ADD_NEW_QUESTION } from '../actions/ActionTypes';
 import _ from 'lodash';
 
 export default function(state = {}, action) {
@@ -7,6 +7,8 @@ export default function(state = {}, action) {
         console.log('Fetching Deck' + action.payload);
         return action.payload;
     case ADD_NEW_DECK:
+        return action.payload;
+    case ADD_NEW_QUESTION:
         return action.payload;
     default:
         return state;

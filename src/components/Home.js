@@ -23,7 +23,7 @@ class Home extends Component {
         AsyncStorage.getItem('decks', (error, data) => {
             if (data === null) {
                 AsyncStorage.setItem('decks', JSON.stringify(InitialData));
-                this.props.fetchAllDecks();
+                
             }
             this.props.fetchAllDecks();
         });

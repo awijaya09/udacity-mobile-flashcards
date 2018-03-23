@@ -16,11 +16,25 @@ class AddNewQuestion extends Component {
     }
 
     submitNewQuesiton() {
-        console.log("Question received");
+        const { addNewQuestion } = this.props;
+        const { question, answer } = this.state;
+        const { goBack } = this.props.navigation;
+        const { deckID } = this.props.navigation.state.params;
+
+        var values = {
+            "question": question,
+            "answer": answer,
+        }
+        var insertNewQn = addNewQuestion(values,deckID );
+        if(insertNewQn) {
+            goBack();
+        }
+
     }
     render() {
         const { headerStyle, titleStyle, itemStyle, buttonStyle } = styles;
         const { goBack } = this.props.navigation;
+        const { question, answer } = this.state;
         return (
             <Container>
                 <Header style={headerStyle} iosBarStyle='light-content'>
@@ -38,11 +52,11 @@ class AddNewQuestion extends Component {
                 <Form>
                     <Item floatingLabel style={itemStyle}>
                         <Label>Question</Label>
-                        <Input value={this.state.question} onChangeText={(question) => this.setState({ question })}/>
+                        <Input value={question} onChangeText={(question) => this.setState({ question })}/>
                     </Item>
                     <Item floatingLabel style={itemStyle}>
                         <Label>Answer</Label>
-                        <Input value={this.state.answer} onChangeText={(answer) => this.setState({ answer })}/>
+                        <Input value={answer} onChangeText={(answer) => this.setState({ answer })}/>
                     </Item>
                 </Form>
                 <Button block info style={buttonStyle} onPress={() => this.submitNewQuesiton()}>
