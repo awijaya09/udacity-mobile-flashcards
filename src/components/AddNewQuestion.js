@@ -24,15 +24,15 @@ class AddNewQuestion extends Component {
         return (
             <Container>
                 <Header style={headerStyle} iosBarStyle='light-content'>
-                    <Left>
-                        <Button transparent onPress={() => goBack()}>
-                            <Icon name='arrow-back' style={titleStyle}/>
-                        </Button>
-                    </Left>
+                    <Left/>
                     <Body>
                         <Title style={titleStyle}>Add New Question</Title>
                     </Body>
-                    <Right/>
+                    <Right>
+                        <Button transparent onPress={() => goBack()}>
+                            <Icon name='close' style={titleStyle}/>
+                        </Button>
+                    </Right>
                 </Header>
                 <Content padder>
                 <Form>

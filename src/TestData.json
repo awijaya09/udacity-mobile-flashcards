@@ -1,30 +1,30 @@
 {
-    "Decks": [
-        {
-            "title": "Watch Lover",
-            "icon": "watch",
-            "id": 1,
-            "questions": [
-                {
-                    "question": "GMT Master is available in full plastic",
-                    "answer": "GMT Master is available in only steel and gold"
-                },
-                {
-                    "question": "Rolex Daytona is the entry level for Rolex Watches",
-                    "answer": "Daytona is one of the most iconic and expensive lineup from Rolex"
-                }
-            ]
-        },
-        {
-            "title": "React",
-            "icon": "flame",
-            "id": 2,
-            "questions": [
-                {
-                    "question": "React technology is developed by Google",
-                    "answer": "Facebook team came up with React JS"
-                }
-            ]
-        }
-    ]
+    "Decks": {
+            "1": {
+                "title": "Watch Lover",
+                "icon": "watch",
+                "id": 1,
+                "questions": [
+                    {
+                        "question": "GMT Master is available in full plastic",
+                        "answer": "GMT Master is available in only steel and gold"
+                    },
+                    {
+                        "question": "Rolex Daytona is the entry level for Rolex Watches",
+                        "answer": "Daytona is one of the most iconic and expensive lineup from Rolex"
+                    }
+                ]
+            },
+            "2": {
+                "title": "React",
+                "icon": "flame",
+                "id": 2,
+                "questions": [
+                    {
+                        "question": "React technology is developed by Google",
+                        "answer": "Facebook team came up with React JS"
+                    }
+                ]
+            }
+    }
 }

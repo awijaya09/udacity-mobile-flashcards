@@ -17,7 +17,6 @@ const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 const MainStack = StackNavigator({
   Home: { screen : Home },
   DetailDeck: { screen: DeckDetail },
-  AddNewQuestion: { screen: AddNewQuestion },
 },
 {
   headerMode: 'none',
@@ -26,6 +25,7 @@ const MainStack = StackNavigator({
 const ModalStack = StackNavigator({
   MainStack: {screen: MainStack},
   NewDeck: { screen : AddNewDeck },
+  AddNewQuestion: { screen: AddNewQuestion },
 }, {
   mode: 'modal',
   headerMode: 'none'

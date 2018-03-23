@@ -4,7 +4,6 @@ import { FETCH_ALL_DECK, ADD_NEW_DECK, ADD_NEW_QUESTION } from './ActionTypes';
 export function fetchAllDecks() {
     const getItem = AsyncStorage.getItem('decks')
         .then(decks => {
-            console.log("Deck item: " + decks);
             return JSON.parse(decks);
         })
         .catch(error => {
@@ -20,7 +19,7 @@ export function addNewDeck(values) {
     const currentDeck = AsyncStorage.getItem('decks')
         .then(decks => {
             var oldDecks = JSON.parse(decks);
-            oldDecks['Decks'].push(values)
+            oldDecks['Decks'][values.id] = values;
             const insertNewItem = AsyncStorage.setItem('decks', JSON.stringify(oldDecks))
                 .catch(error => {
                     return null;
@@ -35,9 +34,13 @@ export function addNewDeck(values) {
 }
 
 export function addNewQuestion(values, deckId) {
+    const currentDeck = AsyncStorage.getItem('decks')
+        .then(decks => {
+            var oldDecks = JSON.parse(decks);
+        });
 
     return {
         type: ADD_NEW_QUESTION,
-       
+        payload: currentDeck,
     }
 }

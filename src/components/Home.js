@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Body, Title, Left, Right, Button, Icon, Content, Text, Card, CardItem, Grid, Col, Spinner, View} from 'native-base';
+import { Container, Header, Body, Title, Left, Right, Button, Icon, Content, Text, Card, CardItem, Grid, Col,Row, Spinner, View} from 'native-base';
 import { title } from 'change-case';
 import AddNewDeck from './AddNewDeck';
 import DeckSingle from './DeckSingle';
@@ -16,16 +16,15 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.goToDetail = this.goToDetail.bind(this);
+        this.moveDecksToGridArray = this.moveDecksToGridArray.bind(this);
     }
 
     componentWillMount() {
-        //AsyncStorage.removeItem('decks');
         AsyncStorage.getItem('decks', (error, data) => {
             if (data === null) {
                 AsyncStorage.setItem('decks', JSON.stringify(InitialData));
                 this.props.fetchAllDecks();
             }
-
             this.props.fetchAllDecks();
         });
     }
@@ -34,8 +33,25 @@ class Home extends Component {
         this.props.navigation.navigate('DetailDeck', { deckData: deckItem });
     }
 
+    moveDecksToGridArray(decks) {
+        var totalColumn = 2;
+        var index = 1;
+        let gridArray = [[]];
+        _.map(decks['Decks'], deckItem => {
+            gridArray[gridArray.length-1].push(deckItem);
+            if (index <= totalColumn) {
+                index++;
+            }
+            if (index > totalColumn) {
+                index = 1;
+                gridArray.push([]);
+            }
+        })
+        return gridArray;
+    }
     renderContent() {
         const { decks } = this.props;
+        const { gridStyle } = styles;
         if(!decks['Decks']) {
             return (
                 <View>
@@ -43,17 +59,23 @@ class Home extends Component {
                 </View>
             )
         }
-        return _.map(decks['Decks'], deckItem => {
-            console.log(deckItem.title);
+        const gridArray = this.moveDecksToGridArray(decks);
+        return _.map(gridArray, (column,key) => {
             return (
-                <Grid key={deckItem.id}>
-                    <DeckSingle 
-                        itemTitle={deckItem.title} 
-                        itemIcon={deckItem.icon} 
-                        itemQuestionsCount={deckItem.questions.length !== null ? deckItem.questions.length : 0} 
-                        onItemClick={() => this.goToDetail(deckItem)}
-                    />
-                </Grid>
+                <Row key={key}>
+                    {_.map(column, (deckItem,key) => {
+                        return (
+                            <Col key={key}>
+                                <DeckSingle 
+                                    itemTitle={deckItem.title} 
+                                    itemIcon={deckItem.icon} 
+                                    itemQuestionsCount={deckItem.questions.length !== null ? deckItem.questions.length : 0} 
+                                    onItemClick={() => this.goToDetail(deckItem)}
+                                />
+                            </Col>
+                        )
+                    })}
+                </Row>
             )
         })
     }
@@ -75,7 +97,7 @@ class Home extends Component {
                         </Button>
                     </Right>
                 </Header>
-                <Content padder>
+                <Content padder>         
                     {this.renderContent()}
                 </Content>
             </Container>
@@ -91,6 +113,9 @@ const styles = {
     titleStyle : {
         color: 'white',
     },
+    gridStyle : {
+        width: '50%',
+    }
 }
 
 function mapStateToProps({ decks }) {
