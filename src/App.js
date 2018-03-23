@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Home from './components/Home';
 import AddNewDeck from './components/AddNewDeck';
-import DeckDetail from './components/DeckDetail';
+import DetailDeck from './components/DetailDeck';
 import AddNewQuestion from './components/AddNewQuestion';
 
 //redux stack
@@ -16,7 +16,7 @@ const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
 const MainStack = StackNavigator({
   Home: { screen : Home },
-  DetailDeck: { screen: DeckDetail },
+  DetailDeck: { screen: DetailDeck },
 },
 {
   headerMode: 'none',
