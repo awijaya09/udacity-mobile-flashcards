@@ -11,18 +11,21 @@ class AddNewQuestion extends Component {
         this.submitNewQuesiton = this.submitNewQuesiton.bind(this);
         this.state = {
             question: '',
-            answer: ''
+            fact: '',
+            answer: false,
+
         }
     }
 
     submitNewQuesiton() {
         const { addNewQuestion } = this.props;
-        const { question, answer } = this.state;
+        const { question, answer, fact } = this.state;
         const { goBack } = this.props.navigation;
         const { deckID } = this.props.navigation.state.params;
 
         var values = {
             "question": question,
+            "fact": fact,
             "answer": answer,
         }
         var insertNewQn = addNewQuestion(values,deckID );
@@ -34,7 +37,7 @@ class AddNewQuestion extends Component {
     render() {
         const { headerStyle, titleStyle, itemStyle, buttonStyle } = styles;
         const { goBack } = this.props.navigation;
-        const { question, answer } = this.state;
+        const { question, answer, fact } = this.state;
         return (
             <Container>
                 <Header style={headerStyle} iosBarStyle='light-content'>
@@ -55,9 +58,18 @@ class AddNewQuestion extends Component {
                         <Input value={question} onChangeText={(question) => this.setState({ question })}/>
                     </Item>
                     <Item floatingLabel style={itemStyle}>
-                        <Label>Answer</Label>
-                        <Input value={answer} onChangeText={(answer) => this.setState({ answer })}/>
+                        <Label>Fact</Label>
+                        <Input value={fact} onChangeText={(fact) => this.setState({ fact })}/>
                     </Item>
+                    <Picker
+                        mode="dropdown"
+                        placeholder="Select Answer"
+                        selectedValue={answer}
+                        onValueChange={(answer) => this.setState({ answer})}
+                    >
+                        <Item label="True" value="true" />
+                        <Item label="False" value="false" />
+                    </Picker>
                 </Form>
                 <Button block info style={buttonStyle} onPress={() => this.submitNewQuesiton()}>
                     <Text>Submit</Text>

@@ -7,11 +7,13 @@
                 "questions": [
                     {
                         "question": "GMT Master is available in full plastic",
-                        "answer": "GMT Master is available in only steel and gold"
+                        "answer": false,
+                        "fact": "GMT Master is available in only steel and gold"
                     },
                     {
                         "question": "Rolex Daytona is the entry level for Rolex Watches",
-                        "answer": "Daytona is one of the most iconic and expensive lineup from Rolex"
+                        "answer": false,
+                        "fact": "Daytona is one of the most iconic and expensive lineup from Rolex"
                     }
                 ]
             },
@@ -21,8 +23,9 @@
                 "id": 2,
                 "questions": [
                     {
-                        "question": "React technology is developed by Google",
-                        "answer": "Facebook team came up with React JS"
+                        "question": "React technology is developed by Facebook",
+                        "answer": true,
+                        "fact": "React was created by Jordan Walke, a software engineer at Facebook."
                     }
                 ]
             }

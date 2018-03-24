@@ -5,6 +5,7 @@ import Home from './components/Home';
 import AddNewDeck from './components/AddNewDeck';
 import DetailDeck from './components/DetailDeck';
 import AddNewQuestion from './components/AddNewQuestion';
+import QuizStack from './components/QuizStack';
 
 //redux stack
 import reducers from './reducers';
@@ -17,6 +18,7 @@ const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 const MainStack = StackNavigator({
   Home: { screen : Home },
   DetailDeck: { screen: DetailDeck },
+  QuizStack: { screen: QuizStack},
 },
 {
   headerMode: 'none',

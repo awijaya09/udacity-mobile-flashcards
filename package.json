@@ -2,6 +2,7 @@
   "name": "mobile-flashcards",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "devDependencies": {
     "jest-expo": "25.0.0",
     "react-native-scripts": "1.11.1",

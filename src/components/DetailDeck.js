@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Body, Title, Left, Right, Button, Icon, Content, Text, Grid, Col, View, Spinner} from 'native-base';
+import { Container, Header, Body, Button, Icon, Content, Text, Grid, Col, View, Spinner} from 'native-base';
 import { title } from 'change-case';
 
 import { connect } from 'react-redux';
@@ -15,6 +15,7 @@ class DetailDeck extends Component {
     }
     renderContent() {
         const { deckData } = this.props.navigation.state.params;
+        const { navigate } = this.props.navigation;
         const { decks } = this.props;
         const { contentStyle, deckTitleStyle, deckSubtitleStyle, buttonStyle } = styles;
 
@@ -32,10 +33,10 @@ class DetailDeck extends Component {
                 <Text style={[deckSubtitleStyle, {marginBottom: 48}]}>
                     {deckItem.questions.length !== null ? deckItem.questions.length : 0} Questions
                 </Text>
-                <Button full dark style={buttonStyle}>
+                <Button full dark style={buttonStyle} onPress={() => navigate('QuizStack', { questions: deckItem.questions })}>
                     <Text>Start quiz</Text>
                 </Button>
-                <Button full bordered dark style={buttonStyle} onPress={() => this.props.navigation.navigate('AddNewQuestion', { deckID: deckData.id })}>
+                <Button full bordered dark style={buttonStyle} onPress={() => navigate('AddNewQuestion', { deckID: deckData.id })}>
                     <Text>Add a new question</Text>
                 </Button> 
             </Content>
