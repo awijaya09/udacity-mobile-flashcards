@@ -3,6 +3,8 @@ import { Container, Header, Content,Body, Left, Right, Icon, Title, Button, Form
 
 import { connect } from 'react-redux';
 import { addNewDeck } from '../actions';
+import PageHeaderModal from './Common/PageHeaderModal';
+import { headerStyle, titleStyle, formItemStyle, formButtonStyle } from '../components/Common/CommonStyle';
 import _ from 'lodash';
 
 class AddNewDeck extends Component { 
@@ -36,64 +38,35 @@ class AddNewDeck extends Component {
 
     render() {
         const { navigate, goBack } = this.props.navigation;
-        const { headerStyle, itemStyle, titleStyle, buttonStyle} = styles;
         return (
             <Container>
-                <Header style={headerStyle} iosBarStyle='light-content'>
-                    <Left />
-                    <Body>
-                        <Title style={titleStyle}>Add New Deck</Title>
-                    </Body>
-                    <Right>
-                        <Button transparent onPress={() => goBack()}>
-                            <Icon name='close' style={titleStyle}/>
-                        </Button>
-                    </Right>
-                </Header>
+                <PageHeaderModal pageTitle={'Add a Deck'} goToPrevPage={() => goBack()}/>
                 <Content padder>
-                <Form>
-                    <Item floatingLabel style={itemStyle}>
-                        <Label>Title</Label>
-                        <Input value={this.state.title} onChangeText={(title) => this.setState({ title })}/>
-                    </Item>
-                    <Picker
-                        mode="dropdown"
-                        placeholder="Select Icon"
-                        selectedValue={this.state.iconName}
-                        onValueChange={(iconName) => this.setState({ iconName})}
-                    >
-                        <Item label="Key" value="md-key" />
-                        <Item label="Switch" value="md-switch" />
-                        <Item label="Football" value="md-football" />
-                        <Item label="Funnel" value="md-funnel" />
-                        <Item label="Man" value="md-man" />
-                    </Picker>
-                </Form>
-                <Button block info style={buttonStyle} onPress={() => this.submitNewDeck()}>
-                    <Text>Create New Deck</Text>
-                </Button>
+                    <Form>
+                        <Item floatingLabel style={formItemStyle}>
+                            <Label>Title</Label>
+                            <Input value={this.state.title} onChangeText={(title) => this.setState({ title })}/>
+                        </Item>
+                        <Picker
+                            mode="dropdown"
+                            placeholder="Select Icon"
+                            selectedValue={this.state.iconName}
+                            onValueChange={(iconName) => this.setState({ iconName})}
+                        >
+                            <Item label="Key" value="md-key" />
+                            <Item label="Switch" value="md-switch" />
+                            <Item label="Football" value="md-football" />
+                            <Item label="Funnel" value="md-funnel" />
+                            <Item label="Man" value="md-man" />
+                        </Picker>
+                    </Form>
+                    <Button block info style={formButtonStyle} onPress={() => this.submitNewDeck()}>
+                        <Text>Create New Deck</Text>
+                    </Button>
                 </Content>
         </Container>
         )
        
     }
 }
-const styles = {
-    headerStyle : {
-        backgroundColor: '#3F51B5',
-    },
-    titleStyle : {
-        color: 'white',
-    },
-    itemStyle : {
-        marginRight: 16,
-    },
-    buttonStyle : {
-        marginTop: 16, 
-        marginRight: 16, 
-        marginLeft: 16,
-        backgroundColor: '#5C6BC0',
-    }
-}
-
 export default connect(null, { addNewDeck })(AddNewDeck);

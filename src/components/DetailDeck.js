@@ -5,6 +5,7 @@ import { title } from 'change-case';
 import { connect } from 'react-redux';
 import { fetchAllDecks } from '../actions';
 import PageHeader from './Common/PageHeader';
+import { headerStyle, titleStyle } from '../components/Common/CommonStyle';
 
 class DetailDeck extends Component { 
     constructor(props) {
@@ -57,12 +58,6 @@ class DetailDeck extends Component {
 }
 
 const styles = {
-    headerStyle : {
-        backgroundColor: '#3F51B5',
-    },
-    titleStyle : {
-        color: 'white',
-    },
     contentStyle: {
         alignItems: 'center',
         marginTop: 32,
