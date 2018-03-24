@@ -12,6 +12,7 @@ export default class QuizTemplate extends Component {
             showFact: false,
             totalQuestions: 0,
             curIndex: 1,
+            endQuiz: false,
         }
     }
 
@@ -38,7 +39,7 @@ export default class QuizTemplate extends Component {
 
     }
     goToNextQuestion() {
-        const { activeQn, score, curIndex } = this.state;
+        const { activeQn, score, curIndex, totalQuestions } = this.state;
         const { questions } = this.props;
         var index = questions.indexOf(activeQn);
         if(index < questions.length-1){
@@ -48,21 +49,38 @@ export default class QuizTemplate extends Component {
                 activeQn: questions[0],
                 curIndex: curIndex+1
             })
+        } else {
+            var percentage = score * 100 / totalQuestions;
+            this.setState({
+                score: percentage,
+                showFact: false,
+                endQuiz: true,
+            })
         }
     }
 
     render() {
         //const { questions } = this.props;
         const { mainContentStyle, deckTitleStyle, buttonStyle, factStyle, answerLabelStyle } = styles;
-        const { questions } = this.props;
-        const { activeQn, totalQuestions, curIndex } = this.state;
+        const { questions, goToPrevPage } = this.props;
+        const { activeQn, totalQuestions, curIndex, showFact, endQuiz, score } = this.state;
         if(activeQn) {
             return (
                 <Container>
                     <Content contentContainerStyle={mainContentStyle}>
                         <Text>{curIndex} / {totalQuestions} Question(s)</Text>
-                        <Text style={ deckTitleStyle }>{activeQn.question}</Text>
-                        { this.state.showFact && 
+                        { endQuiz &&
+                            <View>
+                                <Text style={ deckTitleStyle }>Your score is {score}% </Text>
+                                <Button block bordered dark style={[buttonStyle, {marginTop: 60}]} onPress={()=> goToPrevPage()}>
+                                    <Text>Back to Deck Detail</Text>
+                                </Button>
+                            </View>
+                        }
+                        { !endQuiz && 
+                            <Text style={ deckTitleStyle }>{activeQn.question}</Text>
+                        }
+                        { showFact && 
                             <View>
                                 <Text style={answerLabelStyle}>Answer:</Text>
                                 <Text style={factStyle}>{activeQn.fact}</Text>
@@ -71,7 +89,7 @@ export default class QuizTemplate extends Component {
                                 </Button>
                             </View>
                         }
-                        { !this.state.showFact && 
+                        { !showFact && !endQuiz &&
                             <View block>
                                 <Button block dark style={[buttonStyle, {marginTop: 60,}]} onPress={()=> this.checkAnswer(true)}>
                                     <Text>Correct</Text>

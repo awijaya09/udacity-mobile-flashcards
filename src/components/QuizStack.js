@@ -11,7 +11,7 @@ export default class QuizStack extends Component {
             <Container>
                 <PageHeader pageTitle={'Quiz'} goToPrevPage={() => goBack() }/>
                 <Content padder>
-                    <QuizTemplate questions={questions}/>
+                    <QuizTemplate questions={questions} goToPrevPage={() => goBack() }/>
                 </Content>
             </Container>
         )
