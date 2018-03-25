@@ -16,7 +16,6 @@ class AddNewQuestion extends Component {
             question: '',
             fact: '',
             answer: false,
-
         }
     }
 

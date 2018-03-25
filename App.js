@@ -4,11 +4,11 @@ import { StackNavigator } from 'react-navigation';
 import Home from './components/Home';
 import AddNewDeck from './components/AddNewDeck';
 import DetailDeck from './components/DetailDeck';
-import AddNewQuestion from './components/AddNewQuestion';
-import QuizStack from './components/QuizStack';
+import AddNewQuestion from './src/components/AddNewQuestion';
+import QuizStack from './src/components/QuizStack';
 
 //redux stack
-import reducers from './reducers';
+import reducers from './src/reducers';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxPromise from 'redux-promise';
