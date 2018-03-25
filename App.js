@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import Home from './components/Home';
-import AddNewDeck from './components/AddNewDeck';
-import DetailDeck from './components/DetailDeck';
+import Home from './src/components/Home';
+import AddNewDeck from './src/components/AddNewDeck';
+import DetailDeck from './src/components/DetailDeck';
 import AddNewQuestion from './src/components/AddNewQuestion';
 import QuizStack from './src/components/QuizStack';
 
