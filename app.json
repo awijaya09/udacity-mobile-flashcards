@@ -3,6 +3,9 @@
     "sdkVersion": "25.0.0",
     "androidStatusBar": {
       "backgroundColor": "#1A237E"
+    },
+    "splash": {
+      "image": "./assets/logo.png"
     }
   }
 }
