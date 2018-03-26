@@ -30,10 +30,12 @@ class Home extends Component {
     }
 
     goToDetail(deckItem) {
-        console.log(deckItem);
-        this.props.navigation.navigate('DetailDeck', { deckData: deckItem.deck.deck });
+        this.props.navigation.navigate('DetailDeck', { deckData: deckItem});
     }
 
+    onCreateNew(deckitem) {
+        this.props.navigation.navigate('DetailDeck', { deckData: deckItem.deck.deck });
+    }
     moveDecksToGridArray(decks) {
         var totalColumn = 2;
         var index = 1;
@@ -93,7 +95,7 @@ class Home extends Component {
                         <Title style={titleStyle}>QuizCard</Title>
                     </Body>
                     <Right>
-                        <Button transparent onPress={() => navigate('NewDeck', { onCreateNewDeck: (deck) => this.goToDetail({deck}) })}>
+                        <Button transparent onPress={() => navigate('NewDeck', { onCreateNewDeck: (deck) => this.onCreateNew({deck}) })}>
                             <Icon name='add' style={titleStyle} />
                         </Button>
                     </Right>
