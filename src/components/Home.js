@@ -20,7 +20,7 @@ class Home extends Component {
     }
 
     componentWillMount() {
-        //AsyncStorage.removeItem('decks');
+        AsyncStorage.removeItem('decks');
         AsyncStorage.getItem('decks', (error, data) => {
             if (!data) {
                 AsyncStorage.setItem('decks', JSON.stringify(InitialData));
