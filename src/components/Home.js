@@ -20,17 +20,18 @@ class Home extends Component {
     }
 
     componentWillMount() {
+        //AsyncStorage.removeItem('decks');
         AsyncStorage.getItem('decks', (error, data) => {
-            if (data === null) {
+            if (!data) {
                 AsyncStorage.setItem('decks', JSON.stringify(InitialData));
-                
             }
             this.props.fetchAllDecks();
         });
     }
 
     goToDetail(deckItem) {
-        this.props.navigation.navigate('DetailDeck', { deckData: deckItem });
+        console.log(deckItem);
+        this.props.navigation.navigate('DetailDeck', { deckData: deckItem.deck.deck });
     }
 
     moveDecksToGridArray(decks) {
@@ -92,7 +93,7 @@ class Home extends Component {
                         <Title style={titleStyle}>QuizCard</Title>
                     </Body>
                     <Right>
-                        <Button transparent onPress={() => navigate('NewDeck')}>
+                        <Button transparent onPress={() => navigate('NewDeck', { onCreateNewDeck: (deck) => this.goToDetail({deck}) })}>
                             <Icon name='add' style={titleStyle} />
                         </Button>
                     </Right>

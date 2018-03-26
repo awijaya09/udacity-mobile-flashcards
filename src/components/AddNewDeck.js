@@ -19,18 +19,19 @@ class AddNewDeck extends Component {
 
     submitNewDeck() {
         const { title, iconName } = this.state;
+        var deckId = _.random(0,999);
         if (title && iconName) {
-            var deckId = _.random(0,999);
             var newData= { 
                     "title" : title,
                     "icon": iconName,
                     "id": deckId,
                     "questions" : []
             };
-            var val = this.props.addNewDeck(newData);
-            if (val) {
+           this.props.addNewDeck(newData, payload => {
                 this.props.navigation.goBack();
-            }
+                this.props.navigation.state.params.onCreateNewDeck({ deck: payload['Decks'][deckId] });
+                return payload;
+            });
         }
        
     }
@@ -52,6 +53,7 @@ class AddNewDeck extends Component {
                             placeholder="Select Icon"
                             selectedValue={this.state.iconName}
                             onValueChange={(iconName) => this.setState({ iconName})}
+                            style={{marginLeft: 8}}
                         >
                             <Item label="Key" value="md-key" />
                             <Item label="Switch" value="md-switch" />
